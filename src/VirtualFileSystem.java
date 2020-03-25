@@ -1,8 +1,9 @@
-public class VirtualFileSystem {
+public class VirtualFileSystem
+{
     private DirectoryStructure directoryStructure;
     private DiskController diskController;
 
-    VirtualFileSystem (DirectoryStructure directoryStructure, DiskController diskController)
+    VirtualFileSystem(DirectoryStructure directoryStructure, DiskController diskController)
     {
         this.directoryStructure = directoryStructure;
         this.diskController = diskController;
@@ -13,8 +14,23 @@ public class VirtualFileSystem {
         diskController.showStatus();
     }
 
-    public void createFile(String path, int size)
+    public boolean createFile(String path, int size) // todo make it return error number
     {
-        diskController.allocate(size);
+        AllocatedBlocks blocks = diskController.allocate(size);
+        if (blocks == null) // no enough space
+            return false;
+        if (!directoryStructure.createFile(path, blocks)) // no such directory
+        {
+            diskController.free(blocks);
+            return false;
+        }
+        return true;
     }
+
+    public void showStructure()
+    {
+        directoryStructure.showStructure();
+    }
+
+
 }
