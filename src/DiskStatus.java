@@ -108,5 +108,6 @@ public class DiskStatus {
             if(isBlockFree(i))
                 System.out.print(i + " ");
         }
+        System.out.println();
     }
 }

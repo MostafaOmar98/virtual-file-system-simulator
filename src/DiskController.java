@@ -1,5 +1,11 @@
 public abstract class DiskController {
-    DiskStatus diskStatus;
+    protected DiskStatus diskStatus;
+
+    DiskController(DiskStatus diskStatus)
+    {
+        this.diskStatus = diskStatus;
+    }
+
     public abstract AllocatedBlocks allocate(int size);
 
     public void free(AllocatedBlocks blocks)
@@ -9,4 +15,8 @@ public abstract class DiskController {
             diskStatus.free((Integer) it.getNext());
     }
 
+    public void showStatus()
+    {
+        diskStatus.showStatus();
+    }
 }

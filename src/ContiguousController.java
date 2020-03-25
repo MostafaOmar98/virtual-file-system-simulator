@@ -1,5 +1,9 @@
 public class ContiguousController extends DiskController {
 
+    ContiguousController(DiskStatus diskStatus) {
+        super(diskStatus);
+    }
+
     @Override
     public AllocatedBlocks allocate(int size) {
         int start = diskStatus.getContigousBlocks(size);
