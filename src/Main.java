@@ -19,5 +19,9 @@ public class Main {
         fs.createFile("root/dir1/dir2/file5.txt", 5);
         fs.showStructure();
         fs.showStatus();
+        System.out.println();
+//        fs.deleteFile("root/dir1"); // todo fix bug
+        fs.showStructure();
+        fs.showStatus();
     }
 }

@@ -59,6 +59,39 @@ public class Directory extends FileSystemComponent {
         return next.createDirectory(Utility.join(splittedPath, DirectoryStructure.DELIMETER));
     }
 
+    public AllocatedBlocks deleteFile(String path)
+    {
+        String[] splittedPath = path.split(DirectoryStructure.DELIMETER);
+        if (splittedPath.length == 1)
+        {
+            File file = removeChild(path);
+            if (file == null)
+                return null;
+            return file.getAllocatedBlocks();
+        }
+        Directory next = getChildDirectory(splittedPath[0]);
+        if (next == null)
+            return null;
+        return next.deleteFile(Utility.join(splittedPath, DirectoryStructure.DELIMETER));
+
+    }
+
+    File removeChild(String path)
+    {
+        int i = 0;
+        for (FileSystemComponent item : children)
+        {
+            if (item.name.equals(path))
+            {
+                File f = (File)item;
+                children.remove(i);
+                return f;
+            }
+            ++i;
+        }
+        return null;
+    }
+
     Directory getChildDirectory(String name)
     {
         for (FileSystemComponent item : children)

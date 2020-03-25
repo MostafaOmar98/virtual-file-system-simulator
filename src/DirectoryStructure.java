@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class DirectoryStructure {
     Directory root;
     static String ROOT_NAME = "root", DELIMETER = "/";
@@ -21,6 +23,22 @@ public class DirectoryStructure {
             return false;
         return root.createDirectory(Utility.join(splittedPath, DELIMETER));
     }
+
+    public AllocatedBlocks deleteFile(String path)
+    {
+        String[] splittedPath = path.split(DELIMETER);
+        if (!splittedPath[0].equals(ROOT_NAME))
+            return null;
+        return root.deleteFile(Utility.join(splittedPath, DELIMETER));
+    }
+
+//    public ArrayList<AllocatedBlocks> deleteDirectory(String path)
+//    {
+//        String[] splittedPath = path.split(DELIMETER);
+//        if (!splittedPath[0].equals(ROOT_NAME))
+//            return null;
+//        return root.deleteDirectory(Utility.join(splittedPath, DELIMETER));
+//    }
 
     public void showStructure()
     {

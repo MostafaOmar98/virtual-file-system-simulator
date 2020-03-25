@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class VirtualFileSystem
 {
     private DirectoryStructure directoryStructure;
@@ -31,6 +33,30 @@ public class VirtualFileSystem
     {
         return directoryStructure.createDirectory(path);
     }
+
+    public boolean deleteFile(String path) // has bug when file has the same name as directory
+    {
+        AllocatedBlocks blocks = directoryStructure.deleteFile(path);
+        if (blocks != null)
+        {
+            diskController.free(blocks);
+            return true;
+        }
+        return false;
+    }
+
+//    public boolean deleteDirectory(String path)
+//    {
+//        List<AllocatedBlocks> blocksList = directoryStructure.deleteDirectory(path);
+//        if (blocksList != null)
+//        {
+//            for (AllocatedBlocks blocks : blocksList)
+//                diskController.free(blocks);
+//            return true;
+//        }
+//        return false;
+//    }
+
 
     public void showStructure()
     {

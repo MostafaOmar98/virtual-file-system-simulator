@@ -1,5 +1,5 @@
 public class File extends FileSystemComponent {
-    AllocatedBlocks blocks;
+    private AllocatedBlocks blocks;
 
     public File(String path)
     {
@@ -10,6 +10,11 @@ public class File extends FileSystemComponent {
     {
         super(path, level);
         this.blocks = blocks;
+    }
+
+    public AllocatedBlocks getAllocatedBlocks()
+    {
+        return blocks;
     }
 
     @Override
