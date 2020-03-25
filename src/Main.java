@@ -1,5 +1,11 @@
 public class Main {
 
+    /*
+    TODO:
+    -most probably redesign of directory and files for ease of delete if not then just fix the problem of getting the directory
+    -saving and loading this to file
+    -interpreter
+     */
     public static void main(String[] args) {
         DiskStatus st = new DiskStatus(32);
         DiskController dc = new ContiguousController(st);
