@@ -93,4 +93,20 @@ public class DiskStatus {
         }
         return false;
     }
+
+    void showStatus()
+    {
+        System.out.print("Allocated Blocks: ");
+        for (int i = 0; i < n; ++i)
+        {
+            if (!isBlockFree(i))
+                System.out.print(i + " ");
+        }
+        System.out.print("\nFree Blocks: ");
+        for (int i = 0; i < n; ++i)
+        {
+            if(isBlockFree(i))
+                System.out.print(i + " ");
+        }
+    }
 }
