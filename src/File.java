@@ -16,6 +16,7 @@ public class File extends FileSystemComponent {
     public void print()
     {
         printInfo();
+        System.out.println();
     }
 
 }

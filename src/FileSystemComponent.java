@@ -20,6 +20,6 @@ public abstract class FileSystemComponent {
     {
         for (int i = 0; i < 2 * level; ++i)
             System.out.print(" ");
-        System.out.println("-" + name); // change to only name
+        System.out.print("-" + name); // change to only name
     }
 }

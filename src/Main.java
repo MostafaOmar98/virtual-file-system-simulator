@@ -6,12 +6,17 @@ public class Main {
         DirectoryStructure ds = new DirectoryStructure();
 
         VirtualFileSystem fs = new VirtualFileSystem(ds, dc);
-        fs.showStructure();
-        fs.showStatus();
-        fs.createFile("root/firstFile", 5);
-        fs.createFile("root/firstFile", 5);
-        fs.createFile("root/firstFile", 5);
-        fs.createFile("root/firstFile", 5);
+        fs.createDirectory("root/dir1");
+        fs.createDirectory("root/dir1/dir2");
+        fs.createFile("root/file1.txt", 5);
+        fs.createFile("root/dir1/file1.txt", 5);
+        fs.createFile("root/dir1/file1.txt", 5);
+        fs.createFile("root/dir1/file2.txt", 5);
+        fs.createFile("root/dir1/file3.txt", 5);
+        fs.createFile("root/dir1/dir2/file3.txt", 5);
+        fs.createFile("root/dir1/dir2/file4.txt", 5);
+        fs.createFile("root/dir1/dir2/file4.txt", 5);
+        fs.createFile("root/dir1/dir2/file5.txt", 5);
         fs.showStructure();
         fs.showStatus();
     }

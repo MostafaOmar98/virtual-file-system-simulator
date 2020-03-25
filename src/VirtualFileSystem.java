@@ -27,6 +27,11 @@ public class VirtualFileSystem
         return true;
     }
 
+    public boolean createDirectory(String path)
+    {
+        return directoryStructure.createDirectory(path);
+    }
+
     public void showStructure()
     {
         directoryStructure.showStructure();

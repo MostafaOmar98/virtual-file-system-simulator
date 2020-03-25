@@ -20,6 +20,7 @@ public class Directory extends FileSystemComponent {
     public void print()
     {
         printInfo();
+        System.out.println("/");
         for (FileSystemComponent child : children)
             child.print();
     }
@@ -39,6 +40,23 @@ public class Directory extends FileSystemComponent {
         if (next == null)
             return false;
         return next.createFile(Utility.join(splittedPath, DirectoryStructure.DELIMETER), blocks);
+    }
+
+    public boolean createDirectory(String path)
+    {
+        String[] splittedPath = path.split(DirectoryStructure.DELIMETER);
+        if (splittedPath.length == 1)
+        {
+            if (getChildDirectory(path) != null)
+                return false;
+            FileSystemComponent dir = new Directory(path, this.level + 1);
+            children.add(dir);
+            return true;
+        }
+        Directory next = getChildDirectory(splittedPath[0]);
+        if (next == null)
+            return false;
+        return next.createDirectory(Utility.join(splittedPath, DirectoryStructure.DELIMETER));
     }
 
     Directory getChildDirectory(String name)

@@ -14,6 +14,14 @@ public class DirectoryStructure {
         return root.createFile(Utility.join(splittedPath, DELIMETER), blocks);
     }
 
+    public boolean createDirectory(String path)
+    {
+        String[] splittedPath = path.split(DELIMETER);
+        if (!splittedPath[0].equals(ROOT_NAME))
+            return false;
+        return root.createDirectory(Utility.join(splittedPath, DELIMETER));
+    }
+
     public void showStructure()
     {
         root.print();
