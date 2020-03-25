@@ -4,7 +4,9 @@ public abstract class DiskController {
 
     public void free(AllocatedBlocks blocks)
     {
-
+        Iterator it = blocks.getIterator();
+        while(it.hasNext())
+            diskStatus.free((Integer) it.getNext());
     }
 
 }

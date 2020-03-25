@@ -83,4 +83,14 @@ public class DiskStatus {
         }
         return false;
     }
+
+    boolean free(int i)
+    {
+        if (isAllocated[i])
+        {
+            isAllocated[i] = false;
+            return true;
+        }
+        return false;
+    }
 }
