@@ -1,17 +1,19 @@
 public abstract class FileSystemComponent {
     String name;
     int level;
-
+    FileSystemComponent parent;
     FileSystemComponent(String name)
     {
         this.name = name;
         level = 0;
+        parent = null;
     }
 
-    FileSystemComponent(String name, int level)
+    FileSystemComponent(String name, int level, FileSystemComponent parent)
     {
         this.name = name;
         this.level = level;
+        this.parent = parent;
     }
 
     public abstract void print();

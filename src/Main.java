@@ -29,5 +29,7 @@ public class Main {
 //        fs.deleteFile("root/dir1"); // todo fix bug
         fs.showStructure();
         fs.showStatus();
+
+        FileSystemComponent f = new Directory("abc");
     }
 }

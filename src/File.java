@@ -6,9 +6,9 @@ public class File extends FileSystemComponent {
         super(path);
     }
 
-    public File(String path, int level, AllocatedBlocks blocks)
+    public File(String path, int level, AllocatedBlocks blocks, FileSystemComponent parent)
     {
-        super(path, level);
+        super(path, level, parent);
         this.blocks = blocks;
     }
 
