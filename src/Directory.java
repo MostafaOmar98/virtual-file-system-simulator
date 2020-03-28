@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Directory implements IPrintable {
     private String name;
     private Directory parent;
@@ -76,5 +79,26 @@ public class Directory implements IPrintable {
     public void addDirectory(Directory dir)
     {
         children.addDirectory(dir);
+    }
+
+    public void removeFile(File f)
+    {
+        children.removeFile(f.getName());
+    }
+
+    public void removeDirectory(Directory dir)
+    {
+        children.removeDirectory(dir.getName());
+    }
+
+    public List<AllocatedBlocks> delete()
+    {
+        List<AllocatedBlocks> deletedBlocks = new ArrayList<AllocatedBlocks>();
+        while(children.hasFiles())
+            deletedBlocks.add(children.getFrontFile().delete());
+        while(children.hasDirectories())
+            deletedBlocks.addAll(children.getFrontDirectory().delete());
+        parent.removeDirectory(this);
+        return deletedBlocks;
     }
 }

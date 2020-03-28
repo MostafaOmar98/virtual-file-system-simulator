@@ -43,4 +43,10 @@ public class File implements IPrintable{
         Utility.printLevel(level, "-" + name + "\n");
     }
 
+    public AllocatedBlocks delete()
+    {
+        parent.removeFile(this);
+        return blocks;
+    }
+
 }

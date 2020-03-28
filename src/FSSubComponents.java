@@ -1,5 +1,7 @@
 import java.nio.file.FileSystem;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class FSSubComponents
 {
@@ -47,4 +49,51 @@ public class FSSubComponents
     {
         dirs.add(dir);
     }
+    public void removeFile(String name)
+    {
+        int i = 0;
+        for (File f : files)
+        {
+            if (f.getName().equals(name))
+            {
+                files.remove(i);
+                break;
+            }
+            ++i;
+        }
+    }
+    public void removeDirectory(String name)
+    {
+        int i = 0;
+        for (Directory dir : dirs)
+        {
+            if (dir.getName().equals(name))
+            {
+                dirs.remove(i);
+                break;
+            }
+            ++i;
+        }
+    }
+
+    public boolean hasFiles()
+    {
+        return !files.isEmpty();
+    }
+
+    public boolean hasDirectories()
+    {
+        return !dirs.isEmpty();
+    }
+
+    public File getFrontFile()
+    {
+        return files.get(0);
+    }
+
+    public Directory getFrontDirectory()
+    {
+        return dirs.get(0);
+    }
+
 }

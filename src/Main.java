@@ -2,7 +2,6 @@ public class Main {
 
     /*
     TODO:
-    -most probably redesign of directory and files for ease of delete if not then just fix the problem of getting the directory
     -saving and loading this to file
     -interpreter
      */
@@ -26,5 +25,14 @@ public class Main {
         fs.showStructure();
         fs.showStatus();
         System.out.println();
+
+        fs.deleteDirectory("root/file1.txt");
+
+//        fs.deleteDirectory("root/"); // return error
+
+        fs.showStructure();
+        fs.showStatus();
+        System.out.println();
+
     }
 }

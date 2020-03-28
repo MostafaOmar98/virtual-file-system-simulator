@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class DirectoryStructure {
     Directory root;
@@ -65,4 +66,29 @@ public class DirectoryStructure {
         dir.addDirectory(childDir);
         return true;
     }
+
+    public AllocatedBlocks deleteFile(String path)
+    {
+        String[] sPath = splitPath(path);
+        if (sPath == null)
+            return null;
+
+        File f = root.getFile(Utility.subarray(sPath, 1, sPath.length - 1));
+        if (f == null)
+            return null;
+        return f.delete();
+    }
+
+    public List<AllocatedBlocks> deleteDirectory(String path)
+    {
+        String[] sPath = splitPath(path);
+        if (sPath == null)
+            return null;
+
+        Directory dir = root.getDirectory(Utility.subarray(sPath, 1, sPath.length - 1));
+        if (dir == null)
+            return null;
+        return dir.delete();
+    }
+
 }
