@@ -1,7 +1,6 @@
-import java.nio.file.FileSystem;
+package DirectoryStructurePackage;
+
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 
 public class FSSubComponents
 {

@@ -1,3 +1,9 @@
+import Controllers.ContiguousController;
+import Controllers.DiskController;
+import Controllers.DiskStatus;
+import DirectoryStructurePackage.DirectoryStructure;
+import MainPack.VirtualFileSystem;
+
 public class Main {
 
     /*

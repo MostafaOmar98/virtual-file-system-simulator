@@ -1,7 +1,9 @@
+package Controllers;
+
 public abstract class DiskController {
     protected DiskStatus diskStatus;
 
-    DiskController(DiskStatus diskStatus)
+    public DiskController(DiskStatus diskStatus)
     {
         this.diskStatus = diskStatus;
     }

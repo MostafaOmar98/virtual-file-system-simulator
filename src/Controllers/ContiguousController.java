@@ -1,6 +1,8 @@
+package Controllers;
+
 public class ContiguousController extends DiskController {
 
-    ContiguousController(DiskStatus diskStatus) {
+    public ContiguousController(DiskStatus diskStatus) {
         super(diskStatus);
     }
 

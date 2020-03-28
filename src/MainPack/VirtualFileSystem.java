@@ -1,3 +1,9 @@
+package MainPack;
+
+import Controllers.AllocatedBlocks;
+import Controllers.DiskController;
+import DirectoryStructurePackage.DirectoryStructure;
+
 import java.util.List;
 
 public class VirtualFileSystem
@@ -5,7 +11,7 @@ public class VirtualFileSystem
     private DirectoryStructure directoryStructure;
     private DiskController diskController;
 
-    VirtualFileSystem(DirectoryStructure directoryStructure, DiskController diskController)
+    public VirtualFileSystem(DirectoryStructure directoryStructure, DiskController diskController)
     {
         this.directoryStructure = directoryStructure;
         this.diskController = diskController;

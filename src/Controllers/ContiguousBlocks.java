@@ -1,3 +1,5 @@
+package Controllers;
+
 public class ContiguousBlocks implements AllocatedBlocks {
     int start, count;
 

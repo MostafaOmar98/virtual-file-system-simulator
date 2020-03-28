@@ -1,4 +1,9 @@
-public class File implements IPrintable{
+package DirectoryStructurePackage;
+import Controllers.AllocatedBlocks;
+import UtilityPackage.Utility;
+
+public class File implements IPrintable
+{
     private String name;
     private int level;
     private Directory parent;

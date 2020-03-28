@@ -1,10 +1,13 @@
-import java.util.ArrayList;
+package DirectoryStructurePackage;
+
 import java.util.List;
+import Controllers.AllocatedBlocks;
+import UtilityPackage.Utility;
 
 public class DirectoryStructure {
     Directory root;
     static String ROOT_NAME = "root", DELIMETER = "/";
-    DirectoryStructure()
+    public DirectoryStructure()
     {
         root = new Directory(ROOT_NAME);
     }

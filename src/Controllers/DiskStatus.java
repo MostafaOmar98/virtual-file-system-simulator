@@ -1,8 +1,10 @@
+package Controllers;
+
 public class DiskStatus {
     int n;
     boolean[] isAllocated;
 
-    DiskStatus(int n)
+    public DiskStatus(int n)
     {
         this.n = n;
         isAllocated = new boolean[n];
@@ -12,7 +14,7 @@ public class DiskStatus {
     Returns block index of the first block in a contigous free space of 'count' blocks
     Returns -1 if no such space exists
      */
-    int getContigousBlocks(int count)
+    public int getContigousBlocks(int count)
     {
         int i = 0;
         while(i < n)
@@ -35,7 +37,7 @@ public class DiskStatus {
     Returns index of first free block
     returns -1 if no free blocks exist
      */
-    int getFreeBlock()
+    public int getFreeBlock()
     {
         for (int i = 0; i < n; ++i)
         {
@@ -46,7 +48,7 @@ public class DiskStatus {
     }
 
 
-    boolean isBlockFree(int i)
+    public boolean isBlockFree(int i)
     {
         return !isAllocated[i];
     }
@@ -63,7 +65,7 @@ public class DiskStatus {
     Allocates block at index i
     Returns true if block was initially free, false otherwise
      */
-    boolean allocate(int i)
+    public boolean allocate(int i)
     {
         if (isBlockFree(i))
         {
@@ -73,7 +75,7 @@ public class DiskStatus {
         return false;
     }
 
-    boolean allocateContigousBlocks(int start, int count)
+    public boolean allocateContigousBlocks(int start, int count)
     {
         if (isContigousBlocksFree(start, count))
         {
@@ -84,7 +86,7 @@ public class DiskStatus {
         return false;
     }
 
-    boolean free(int i)
+    public boolean free(int i)
     {
         if (isAllocated[i])
         {
@@ -94,7 +96,7 @@ public class DiskStatus {
         return false;
     }
 
-    void showStatus()
+    public void showStatus()
     {
         System.out.print("Allocated Blocks: ");
         for (int i = 0; i < n; ++i)

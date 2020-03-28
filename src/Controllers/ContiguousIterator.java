@@ -1,3 +1,5 @@
+package Controllers;
+
 public class ContiguousIterator implements Iterator {
     int count, current, start;
 

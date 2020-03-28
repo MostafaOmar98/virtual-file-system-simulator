@@ -1,0 +1,6 @@
+package UtilityPackage;
+
+public enum VFSError
+{
+    OK, INV_COMMAND, NUM_ARGUMENTS, FILE_NOT_EXIST, FOLDER_NOT_EXIST, FILE_EXISTS, FOLDER_EXISTS;
+}
