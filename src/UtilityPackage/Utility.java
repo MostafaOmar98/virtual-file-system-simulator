@@ -55,11 +55,8 @@ public class Utility
             case FOLDER_NOT_EXIST:
                 System.out.println("Given folder path does not exist");
                 break;
-            case FILE_EXISTS:
-                System.out.println("A file already exists with that name");
-                break;
-            case FOLDER_EXISTS:
-                System.out.println("A folder already exists with that name");
+            case ALREADY_EXISTS:
+                System.out.println("Another file or folder already exists with that name in that path");
                 break;
             case INV_ARGUMENT:
                 System.out.println("Invalid argument input");

@@ -13,8 +13,9 @@ public class Main {
     /*
     TODO:
     -saving and loading this to file
-    -other allocation technique
     -The space thing
+    -Removing root bug
+    -back to display structure
      */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);

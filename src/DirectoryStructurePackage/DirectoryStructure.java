@@ -36,14 +36,19 @@ public class DirectoryStructure {
         return root.getDirectory(Utility.subarray(sPath, 1, sPath.length - 1)) != null; // already exists
     }
 
+    boolean exists(String[] sPath)
+    {
+        return fileExists(sPath) || directoryExists(sPath);
+    }
+
     public VFSError createFile(String path, AllocatedBlocks blocks)
     {
         String[] sPath = splitPath(path);
         if (sPath == null)
             return VFSError.FOLDER_NOT_EXIST;
 
-        if (fileExists(sPath)) // already exists
-            return VFSError.FILE_EXISTS;
+        if (exists(sPath)) // already exists
+            return VFSError.ALREADY_EXISTS;
 
         Directory dir = root.getDirectory(Utility.subarray(sPath, 1, sPath.length - 2));
         if (dir == null)
@@ -60,8 +65,8 @@ public class DirectoryStructure {
         if (sPath == null)
             return VFSError.FOLDER_NOT_EXIST;
 
-        if (directoryExists(sPath)) // already exists
-            return VFSError.FOLDER_EXISTS;
+        if (exists(sPath)) // already exists
+            return VFSError.ALREADY_EXISTS;
 
         Directory dir = root.getDirectory(Utility.subarray(sPath, 1, sPath.length - 2));
         if (dir == null)
