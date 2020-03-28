@@ -23,6 +23,11 @@ public class DeleteFolderCommand implements ICommand
             error = VFSError.NUM_ARGUMENTS;
             return;
         }
+        if (args[0].equals("root"))
+        {
+            error = VFSError.INV_DELETE;
+            return;
+        }
     }
 
     @Override

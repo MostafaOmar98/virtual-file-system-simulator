@@ -64,6 +64,9 @@ public class Utility
             case NO_SPACE:
                 System.out.println("No free space");
                 break;
+            case INV_DELETE:
+                System.out.println("You shouldn't delete this directory :(");
+                break;
             default:
                 assert(false);
         }
