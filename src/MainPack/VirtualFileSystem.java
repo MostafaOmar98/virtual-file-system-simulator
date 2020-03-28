@@ -2,9 +2,12 @@ package MainPack;
 
 import Controllers.AllocatedBlocks;
 import Controllers.DiskController;
+import DirectoryStructurePackage.Directory;
 import DirectoryStructurePackage.DirectoryStructure;
+import DirectoryStructurePackage.File;
 import UtilityPackage.VFSError;
 
+import java.nio.file.Files;
 import java.util.List;
 
 public class VirtualFileSystem
@@ -71,4 +74,18 @@ public class VirtualFileSystem
     }
 
 
+    public String getBitmap()
+    {
+        return diskController.getBitmap();
+    }
+
+    public List<Directory> getDirs()
+    {
+        return directoryStructure.getDirs();
+    }
+
+    public List<File> getFiles()
+    {
+        return directoryStructure.getFiles();
+    }
 }

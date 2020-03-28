@@ -8,11 +8,16 @@ import java.util.Arrays;
 
 public class IndexedController extends DiskController
 {
-    int indexSize; // number of blocks it can save
+    private int indexSize; // number of blocks it can save
     public IndexedController(DiskStatus diskStatus)
     {
         super(diskStatus);
         indexSize = diskStatus.getBlockSize() * 1024 / 4;
+    }
+
+    public int getIndexSize()
+    {
+        return indexSize;
     }
 
     @Override

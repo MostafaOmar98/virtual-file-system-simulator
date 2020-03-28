@@ -106,4 +106,35 @@ public class Directory implements IPrintable
         parent.removeDirectory(this);
         return deletedBlocks;
     }
+
+    public List<Directory> getSubDirs()
+    {
+        ArrayList<Directory> dirs = new ArrayList<>();
+        dirs.add(this);
+        for (Directory dir : children.getDirs())
+            dirs.addAll(dir.getSubDirs());
+        return dirs;
+    }
+
+    public List<File> getSubFiles()
+    {
+        ArrayList<File> files = new ArrayList<>();
+        for (File f : children.getFiles())
+            files.add(f);
+        for (Directory dir : children.getDirs())
+            files.addAll(dir.getSubFiles());
+        return files;
+    }
+
+    String getPath()
+    {
+        if (name.equals("root"))
+            return "root";
+        return parent.getPath() + "/" + name;
+    }
+
+    public String toString()
+    {
+        return "0 " + getPath();
+    }
 }

@@ -10,6 +10,30 @@ public class DiskStatus {
         isAllocated = new boolean[n];
     }
 
+    public DiskStatus(String s)
+    {
+        n = s.length();
+        isAllocated = new boolean[n];
+        for (int i = 0; i < n; ++i)
+        {
+            if (s.charAt(i) == '1')
+                isAllocated[i] = true;
+        }
+    }
+
+    public String toString()
+    {
+        String s = "";
+        for (int i = 0; i < n; ++i)
+        {
+            if (isAllocated[i])
+                s += '1';
+            else
+                s += '0';
+        }
+        return s;
+    }
+
     public int getN()
     {
         return n;

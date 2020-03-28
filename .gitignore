@@ -1,3 +1,4 @@
 .idea
 out
 tests.txt
+src/IndexedDiskStructure.vsf

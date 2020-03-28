@@ -8,6 +8,11 @@ public abstract class DiskController {
         this.diskStatus = diskStatus;
     }
 
+    public String getBitmap()
+    {
+        return diskStatus.toString();
+    }
+
     public abstract AllocatedBlocks allocate(int size);
 
     public void free(AllocatedBlocks blocks)

@@ -1,5 +1,6 @@
 package DirectoryStructurePackage;
 
+import java.nio.file.Files;
 import java.util.List;
 import Controllers.AllocatedBlocks;
 import UtilityPackage.Utility;
@@ -100,4 +101,13 @@ public class DirectoryStructure {
         return dir.delete();
     }
 
+    public List<Directory> getDirs()
+    {
+        return root.getSubDirs();
+    }
+
+    public List<File> getFiles()
+    {
+        return root.getSubFiles();
+    }
 }

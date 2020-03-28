@@ -54,4 +54,14 @@ public class File implements IPrintable
         return blocks;
     }
 
+    String getPath()
+    {
+        return parent.getPath() + "/" + name;
+    }
+
+    public String toString()
+    {
+        return "1 " + getPath();
+    }
+
 }
