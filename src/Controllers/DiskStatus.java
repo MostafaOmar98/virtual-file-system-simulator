@@ -1,19 +1,34 @@
 package Controllers;
 
 public class DiskStatus {
-    int n;
-    boolean[] isAllocated;
-
+    private int n;
+    private boolean[] isAllocated;
+    private int BLOCK_SIZE = 1; // in KBs
     public DiskStatus(int n)
     {
         this.n = n;
         isAllocated = new boolean[n];
     }
 
+    public int getN()
+    {
+        return n;
+    }
+
+    public boolean[] getIsAllocated()
+    {
+        return isAllocated;
+    }
+
+    public int getBlockSize()
+    {
+        return BLOCK_SIZE;
+    }
+
     /*
-    Returns block index of the first block in a contigous free space of 'count' blocks
-    Returns -1 if no such space exists
-     */
+        Returns block index of the first block in a contigous free space of 'count' blocks
+        Returns -1 if no such space exists
+         */
     public int getContigousBlocks(int count)
     {
         int i = 0;

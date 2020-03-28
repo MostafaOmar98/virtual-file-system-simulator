@@ -1,6 +1,11 @@
-package Controllers;
+package Controllers.Contiguous;
 
-public class ContiguousController extends DiskController {
+import Controllers.AllocatedBlocks;
+import Controllers.DiskController;
+import Controllers.DiskStatus;
+
+public class ContiguousController extends DiskController
+{
 
     public ContiguousController(DiskStatus diskStatus) {
         super(diskStatus);

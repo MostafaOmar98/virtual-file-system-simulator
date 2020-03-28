@@ -1,4 +1,4 @@
-import Controllers.ContiguousController;
+import Controllers.Contiguous.ContiguousController;
 import Controllers.DiskController;
 import Controllers.DiskStatus;
 import DirectoryStructurePackage.DirectoryStructure;
@@ -12,7 +12,8 @@ public class Main {
     /*
     TODO:
     -saving and loading this to file
-    -interpreter
+    -other allocation technique
+    -The space thing
      */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);

@@ -1,6 +1,10 @@
-package Controllers;
+package Controllers.Contiguous;
 
-public class ContiguousBlocks implements AllocatedBlocks {
+import Controllers.AllocatedBlocks;
+import Controllers.Iterator;
+
+public class ContiguousBlocks implements AllocatedBlocks
+{
     int start, count;
 
     ContiguousBlocks(int start, int count)

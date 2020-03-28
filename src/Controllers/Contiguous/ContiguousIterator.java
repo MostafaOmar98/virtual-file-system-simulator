@@ -1,6 +1,9 @@
-package Controllers;
+package Controllers.Contiguous;
 
-public class ContiguousIterator implements Iterator {
+import Controllers.Iterator;
+
+public class ContiguousIterator implements Iterator
+{
     int count, current, start;
 
     ContiguousIterator(int start, int count)
