@@ -35,4 +35,40 @@ public class Utility
             System.out.print(" ");
         System.out.print(end);
     }
+
+    public static void printError(VFSError error)
+    {
+        switch(error)
+        {
+            case OK:
+                System.out.println("Command Executed Succesfully");
+                break;
+            case INV_COMMAND:
+                System.out.println("Invalid Command");
+                break;
+            case NUM_ARGUMENTS:
+                System.out.println("Invalid Number of arguments");
+                break;
+            case FILE_NOT_EXIST:
+                System.out.println("Given file path does not exist");
+                break;
+            case FOLDER_NOT_EXIST:
+                System.out.println("Given folder path does not exist");
+                break;
+            case FILE_EXISTS:
+                System.out.println("A file already exists with that name");
+                break;
+            case FOLDER_EXISTS:
+                System.out.println("A folder already exists with that name");
+                break;
+            case INV_ARGUMENT:
+                System.out.println("Invalid argument input");
+                break;
+            case NO_SPACE:
+                System.out.println("No free space");
+                break;
+            default:
+                assert(false);
+        }
+    }
 }

@@ -3,13 +3,13 @@ import MainPack.VirtualFileSystem;
 import UtilityPackage.Utility;
 import UtilityPackage.VFSError;
 
-public class DeleteFileCommand implements ICommand
+public class DisplayDiskStatusCommand implements ICommand
 {
     private String[] args;
     VirtualFileSystem vfs;
     VFSError error;
 
-    public DeleteFileCommand(String[] args, VirtualFileSystem vfs)
+    public DisplayDiskStatusCommand(String[] args, VirtualFileSystem vfs)
     {
         this.args = args;
         this.vfs = vfs;
@@ -18,7 +18,7 @@ public class DeleteFileCommand implements ICommand
 
     private void verify()
     {
-        if (args.length != 1)
+        if (args.length != 0)
         {
             error = VFSError.NUM_ARGUMENTS;
             return;
@@ -30,7 +30,10 @@ public class DeleteFileCommand implements ICommand
     {
         verify();
         if (error == VFSError.OK)
-            error = vfs.deleteFile(args[0]);
+        {
+            vfs.showStatus();
+            vfs.showStructure();
+        }
         Utility.printError(error);
         return error;
     }

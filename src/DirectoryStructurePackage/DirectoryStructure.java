@@ -3,6 +3,7 @@ package DirectoryStructurePackage;
 import java.util.List;
 import Controllers.AllocatedBlocks;
 import UtilityPackage.Utility;
+import UtilityPackage.VFSError;
 
 public class DirectoryStructure {
     Directory root;
@@ -35,39 +36,39 @@ public class DirectoryStructure {
         return root.getDirectory(Utility.subarray(sPath, 1, sPath.length - 1)) != null; // already exists
     }
 
-    public boolean createFile(String path, AllocatedBlocks blocks)
+    public VFSError createFile(String path, AllocatedBlocks blocks)
     {
         String[] sPath = splitPath(path);
         if (sPath == null)
-            return false;
+            return VFSError.FOLDER_NOT_EXIST;
 
         if (fileExists(sPath)) // already exists
-            return false;
+            return VFSError.FILE_EXISTS;
 
         Directory dir = root.getDirectory(Utility.subarray(sPath, 1, sPath.length - 2));
         if (dir == null)
-            return false;
+            return VFSError.FOLDER_NOT_EXIST;
 
         File f = new File(Utility.back(sPath), dir.getLevel() + 1, blocks, dir);
         dir.addFile(f);
-        return true;
+        return VFSError.OK;
     }
 
-    public boolean createDirectory(String path)
+    public VFSError createDirectory(String path)
     {
         String[] sPath = splitPath(path);
         if (sPath == null)
-            return false;
+            return VFSError.FOLDER_NOT_EXIST;
 
         if (directoryExists(sPath)) // already exists
-            return false;
+            return VFSError.FOLDER_EXISTS;
 
         Directory dir = root.getDirectory(Utility.subarray(sPath, 1, sPath.length - 2));
         if (dir == null)
-            return false;
+            return VFSError.FOLDER_NOT_EXIST;
         Directory childDir = new Directory(Utility.back(sPath), dir.getLevel() + 1, dir);
         dir.addDirectory(childDir);
-        return true;
+        return VFSError.OK;
     }
 
     public AllocatedBlocks deleteFile(String path)

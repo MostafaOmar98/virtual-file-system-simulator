@@ -3,6 +3,7 @@ package MainPack;
 import Controllers.AllocatedBlocks;
 import Controllers.DiskController;
 import DirectoryStructurePackage.DirectoryStructure;
+import UtilityPackage.VFSError;
 
 import java.util.List;
 
@@ -22,45 +23,45 @@ public class VirtualFileSystem
         diskController.showStatus();
     }
 
-    public boolean createFile(String path, int size) // todo make it return error number
+    public VFSError createFile(String path, int size) // todo make it return error number
     {
         AllocatedBlocks blocks = diskController.allocate(size);
         if (blocks == null) // no enough space
-            return false;
-        if (!directoryStructure.createFile(path, blocks)) // no such directory
+            return VFSError.NO_SPACE;
+        if (directoryStructure.createFile(path, blocks) != VFSError.OK) // no such directory
         {
             diskController.free(blocks);
-            return false;
+            return VFSError.FOLDER_NOT_EXIST;
         }
-        return true;
+        return VFSError.OK;
     }
 
-    public boolean createDirectory(String path)
+    public VFSError createDirectory(String path)
     {
         return directoryStructure.createDirectory(path);
     }
 
-    public boolean deleteFile(String path) // has bug when file has the same name as directory
+    public VFSError deleteFile(String path) // has bug when file has the same name as directory
     {
         AllocatedBlocks blocks = directoryStructure.deleteFile(path);
         if (blocks != null)
         {
             diskController.free(blocks);
-            return true;
+            return VFSError.OK;
         }
-        return false;
+        return VFSError.FILE_NOT_EXIST;
     }
 
-    public boolean deleteDirectory(String path)
+    public VFSError deleteDirectory(String path)
     {
         List<AllocatedBlocks> blocksList = directoryStructure.deleteDirectory(path);
         if (blocksList != null)
         {
             for (AllocatedBlocks blocks : blocksList)
                 diskController.free(blocks);
-            return true;
+            return VFSError.OK;
         }
-        return false;
+        return VFSError.FOLDER_NOT_EXIST;
     }
 
 

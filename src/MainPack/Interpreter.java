@@ -1,41 +1,50 @@
 package MainPack;
 
 import UtilityPackage.Utility;
+import UtilityPackage.VFSError;
+import Commands.*;
 
 public class Interpreter {
     String[] args;
     String cmd;
-    Interpreter(String command)
+    VirtualFileSystem vfs;
+    public Interpreter(String command, VirtualFileSystem vfs)
     {
         args = command.split(" ");
         cmd = args[0];
         args = Utility.subarray(args, 1, args.length - 1);
+        this.vfs = vfs;
     }
 
-//    public VFSError run()
-//    {
-//        ICommand command = null;
-//        switch(cmd)
-//        {
-//            case "CreateFile":
-//                command = new CreateFileCommand(args);
-//                break;
-//            case "DeleteFile":
-//                command = new DeleteFileCommand(args);
-//                break;
-//            case "CreateFolder":
-//                command = new CreateFolderCommand(args);
-//                break;
-//            case "DeleteFolder":
-//                command = new DeleteFolderCommand(args);
-//                break;
-//            default:
-//                System.out.println("Invalid Command");
-//                return VFSError.INV_COMMAND;
-//                break;
-//        }
-//        if (command != null)
-//            return command.execute();
-//        return VFSError.OK;
-//    }
+    public VFSError run()
+    {
+        ICommand command = null;
+        switch(cmd)
+        {
+            case "CreateFile":
+                command = new CreateFileCommand(args, vfs);
+                break;
+            case "DeleteFile":
+                command = new DeleteFileCommand(args, vfs);
+                break;
+            case "CreateFolder":
+                command = new CreateFolderCommand(args, vfs);
+                break;
+            case "DeleteFolder":
+                command = new DeleteFolderCommand(args, vfs);
+                break;
+            case "f": /// todo DEBUG CHANGE
+                command = new DisplayDiskStatusCommand(args, vfs);
+                break;
+            case "DisplayDiskStructure":
+                command = new DisplayDiskStructureCommand(args, vfs);
+                break;
+            default:
+                Utility.printError(VFSError.INV_COMMAND);
+                return VFSError.INV_COMMAND;
+        }
+        if (command != null)
+            return command.execute();
+        return VFSError.OK;
+    }
 }
