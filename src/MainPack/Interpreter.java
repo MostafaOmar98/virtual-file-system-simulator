@@ -33,7 +33,7 @@ public class Interpreter {
             case "DeleteFolder":
                 command = new DeleteFolderCommand(args, vfs);
                 break;
-            case "f": /// todo DEBUG CHANGE
+            case "DisplayDiskStatus":
                 command = new DisplayDiskStatusCommand(args, vfs);
                 break;
             case "DisplayDiskStructure":

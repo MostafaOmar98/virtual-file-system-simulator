@@ -26,7 +26,7 @@ public class VirtualFileSystem
         diskController.showStatus();
     }
 
-    public VFSError createFile(String path, int size) // todo make it return error number
+    public VFSError createFile(String path, int size)
     {
         AllocatedBlocks blocks = diskController.allocate(size);
         if (blocks == null) // no enough space

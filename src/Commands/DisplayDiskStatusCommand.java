@@ -32,7 +32,6 @@ public class DisplayDiskStatusCommand implements ICommand
         if (error == VFSError.OK)
         {
             vfs.showStatus();
-            vfs.showStructure();
         }
         Utility.printError(error);
         return error;
