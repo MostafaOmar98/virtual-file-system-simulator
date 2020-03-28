@@ -13,16 +13,37 @@ public class DirectoryStructure {
         root.print();
     }
 
-    public boolean createFile(String path, AllocatedBlocks blocks)
+    private String[] splitPath(String path)
     {
         String[] sPath = path.split(DELIMETER);
         if (!sPath[0].equals(ROOT_NAME))
+            return null;
+        return sPath;
+    }
+
+    private boolean fileExists(String[] sPath)
+    {
+        return root.getFile(Utility.subarray(sPath, 1, sPath.length - 1)) != null; // already exists
+    }
+
+    private boolean directoryExists(String[] sPath)
+    {
+        return root.getDirectory(Utility.subarray(sPath, 1, sPath.length - 1)) != null; // already exists
+    }
+
+    public boolean createFile(String path, AllocatedBlocks blocks)
+    {
+        String[] sPath = splitPath(path);
+        if (sPath == null)
             return false;
-        if (root.getFile(Utility.subarray(sPath, 1, sPath.length - 1)) != null) // already exists
+
+        if (fileExists(sPath)) // already exists
             return false;
+
         Directory dir = root.getDirectory(Utility.subarray(sPath, 1, sPath.length - 2));
         if (dir == null)
             return false;
+
         File f = new File(Utility.back(sPath), dir.getLevel() + 1, blocks, dir);
         dir.addFile(f);
         return true;
@@ -30,11 +51,13 @@ public class DirectoryStructure {
 
     public boolean createDirectory(String path)
     {
-        String[] sPath = path.split(DELIMETER);
-        if (!sPath[0].equals(ROOT_NAME))
+        String[] sPath = splitPath(path);
+        if (sPath == null)
             return false;
-        if (root.getDirectory(Utility.subarray(sPath, 1, sPath.length - 1)) != null) // already exists
+
+        if (directoryExists(sPath)) // already exists
             return false;
+
         Directory dir = root.getDirectory(Utility.subarray(sPath, 1, sPath.length - 2));
         if (dir == null)
             return false;
