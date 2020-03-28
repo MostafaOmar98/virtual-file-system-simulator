@@ -26,10 +26,5 @@ public class Main {
         fs.showStructure();
         fs.showStatus();
         System.out.println();
-//        fs.deleteFile("root/dir1"); // todo fix bug
-        fs.showStructure();
-        fs.showStatus();
-
-        FileSystemComponent f = new Directory("abc");
     }
 }

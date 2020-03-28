@@ -34,16 +34,16 @@ public class VirtualFileSystem
         return directoryStructure.createDirectory(path);
     }
 
-    public boolean deleteFile(String path) // has bug when file has the same name as directory
-    {
-        AllocatedBlocks blocks = directoryStructure.deleteFile(path);
-        if (blocks != null)
-        {
-            diskController.free(blocks);
-            return true;
-        }
-        return false;
-    }
+//    public boolean deleteFile(String path) // has bug when file has the same name as directory
+//    {
+//        AllocatedBlocks blocks = directoryStructure.deleteFile(path);
+//        if (blocks != null)
+//        {
+//            diskController.free(blocks);
+//            return true;
+//        }
+//        return false;
+//    }
 
 //    public boolean deleteDirectory(String path)
 //    {

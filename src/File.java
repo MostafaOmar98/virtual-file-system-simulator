@@ -1,15 +1,35 @@
-public class File extends FileSystemComponent {
+public class File implements IPrintable{
+    private String name;
+    private int level;
+    private Directory parent;
     private AllocatedBlocks blocks;
 
-    public File(String path)
+    public File(String name, int level, AllocatedBlocks blocks, Directory parent)
     {
-        super(path);
+        this.name = name;
+        this.level = level;
+        this.blocks = blocks;
+        this.parent = parent;
     }
 
-    public File(String path, int level, AllocatedBlocks blocks, FileSystemComponent parent)
+    public String getName()
     {
-        super(path, level, parent);
-        this.blocks = blocks;
+        return name;
+    }
+
+    public int getLevel()
+    {
+        return level;
+    }
+
+    public Directory getParent()
+    {
+        return parent;
+    }
+
+    public AllocatedBlocks getBlocks()
+    {
+        return blocks;
     }
 
     public AllocatedBlocks getAllocatedBlocks()
@@ -20,8 +40,7 @@ public class File extends FileSystemComponent {
     @Override
     public void print()
     {
-        printInfo();
-        System.out.println();
+        Utility.printLevel(level, "-" + name + "\n");
     }
 
 }
