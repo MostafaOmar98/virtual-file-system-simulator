@@ -7,6 +7,7 @@ public class IndexedIterator implements Iterator
     int[] indexBlocks, dataBlocks;
     int blockSize;
     int curData = 0, curIndex = 0;
+    boolean takeIndex = true;
     public IndexedIterator(int[] indexBlocks, int[] dataBlocks)
     {
         super();
@@ -24,8 +25,13 @@ public class IndexedIterator implements Iterator
     @Override
     public Object getNext()
     {
-        if (curData%blockSize == 0)
+        if (takeIndex)
+        {
+            takeIndex = false;
             return indexBlocks[curIndex++];
+        }
+        if ((curData + 1)%blockSize == 0)
+            takeIndex = true;
         return dataBlocks[curData++];
     }
 }

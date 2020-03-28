@@ -1,6 +1,7 @@
 import Controllers.Contiguous.ContiguousController;
 import Controllers.DiskController;
 import Controllers.DiskStatus;
+import Controllers.Indexed.IndexedController;
 import DirectoryStructurePackage.DirectoryStructure;
 import MainPack.Interpreter;
 import MainPack.VirtualFileSystem;
@@ -18,7 +19,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         DiskStatus st = new DiskStatus(32);
-        DiskController dc = new ContiguousController(st);
+        DiskController dc = new IndexedController(st);
         DirectoryStructure ds = new DirectoryStructure();
 
         VirtualFileSystem vfs = new VirtualFileSystem(ds, dc);

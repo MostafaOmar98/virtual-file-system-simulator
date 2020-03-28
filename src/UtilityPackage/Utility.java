@@ -71,4 +71,10 @@ public class Utility
                 assert(false);
         }
     }
+
+    public static void init(int[] arr, int x)
+    {
+        for (int i = 0; i < arr.length; ++i)
+            arr[i] = x;
+    }
 }
