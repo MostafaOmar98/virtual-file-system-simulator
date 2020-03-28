@@ -7,7 +7,7 @@ public class ContiguousBlocks implements AllocatedBlocks
 {
     int start, count;
 
-    ContiguousBlocks(int start, int count)
+    public ContiguousBlocks(int start, int count)
     {
         this.start = start;
         this.count = count;
@@ -17,5 +17,10 @@ public class ContiguousBlocks implements AllocatedBlocks
     public Iterator getIterator()
     {
         return new ContiguousIterator(start, count);
+    }
+
+    public String toString()
+    {
+        return "" + start + " " + count;
     }
 }

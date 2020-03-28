@@ -110,9 +110,11 @@ public class Directory implements IPrintable
     public List<Directory> getSubDirs()
     {
         ArrayList<Directory> dirs = new ArrayList<>();
-        dirs.add(this);
         for (Directory dir : children.getDirs())
+        {
+            dirs.add(dir);
             dirs.addAll(dir.getSubDirs());
+        }
         return dirs;
     }
 

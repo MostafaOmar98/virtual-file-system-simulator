@@ -61,7 +61,7 @@ public class File implements IPrintable
 
     public String toString()
     {
-        return "1 " + getPath();
+        return "1 " + getPath() + " " + blocks.toString();
     }
 
 }

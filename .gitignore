@@ -1,4 +1,4 @@
 .idea
 out
 tests.txt
-src/IndexedDiskStructure.vsf
+src/PersistenceManager/IndexedDiskStructure.vsf

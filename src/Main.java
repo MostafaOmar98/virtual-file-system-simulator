@@ -5,6 +5,7 @@ import Controllers.Indexed.IndexedController;
 import DirectoryStructurePackage.DirectoryStructure;
 import MainPack.Interpreter;
 import MainPack.VirtualFileSystem;
+import PersistenceManager.ContiguousFileManager;
 import PersistenceManager.FileManager;
 import PersistenceManager.IndexedFileManager;
 
@@ -14,8 +15,6 @@ public class Main {
 
     /*
     TODO:
-    -saving and loading this to file
-    -back to display structure
      */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -31,24 +30,24 @@ public class Main {
         VirtualFileSystem vfs = null;
         if (choice == 1)
         {
-            //
+            vsfFilePath = "C:\\Users\\MostafaOmar\\IdeaProjects\\VirtualFileSystemSimulator\\src\\PersistenceManager\\ContiguousDiskStructure.vsf";
+            fm = new ContiguousFileManager(vsfFilePath, vfs);
         }
         else if (choice == 2)
         {
-            vsfFilePath = "C:\\Users\\MostafaOmar\\IdeaProjects\\VirtualFileSystemSimulator\\src\\IndexedDiskStructure.vsf";
+            vsfFilePath = "C:\\Users\\MostafaOmar\\IdeaProjects\\VirtualFileSystemSimulator\\src\\PersistenceManager\\IndexedDiskStructure.vsf";
             fm = new IndexedFileManager(vsfFilePath, vfs);
         }
-
         fm.load();
         vfs = fm.getVirtualFileSystem();
         while(true)
         {
             String cmd;
             cmd = sc.nextLine();
-            Interpreter interpreter = new Interpreter(cmd, vfs);
-            interpreter.run();
             if (cmd.equals("quit"))
                 break;
+            Interpreter interpreter = new Interpreter(cmd, vfs);
+            interpreter.run();
         }
         fm.save();
     }

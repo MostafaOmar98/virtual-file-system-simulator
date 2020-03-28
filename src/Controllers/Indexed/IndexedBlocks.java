@@ -21,12 +21,25 @@ public class IndexedBlocks implements AllocatedBlocks
         for (int i = 0; i < indexBlocks.size(); ++i)
             this.indexBlocks[i] = indexBlocks.get(i);
         for (int i = 0; i < dataBlocks.size(); ++i)
-            this.indexBlocks[i] = dataBlocks.get(i);
+            this.dataBlocks[i] = dataBlocks.get(i);
     }
 
     @Override
     public Iterator getIterator()
     {
         return new IndexedIterator(indexBlocks, dataBlocks);
+    }
+
+    public String toString()
+    {
+        Iterator it = getIterator();
+        String s = "";
+        while(it.hasNext())
+        {
+            s += "" + it.getNext();
+            if (it.hasNext())
+                s += " ";
+        }
+        return s;
     }
 }
