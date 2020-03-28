@@ -114,10 +114,14 @@ public class DiskStatus {
     public void showStatus()
     {
         System.out.print("Allocated Blocks: ");
+        int countAlloc = 0;
         for (int i = 0; i < n; ++i)
         {
             if (!isBlockFree(i))
+            {
                 System.out.print(i + " ");
+                countAlloc++;
+            }
         }
         System.out.print("\nFree Blocks: ");
         for (int i = 0; i < n; ++i)
@@ -126,5 +130,7 @@ public class DiskStatus {
                 System.out.print(i + " ");
         }
         System.out.println();
+        System.out.println("Allocated Space: " + (countAlloc * BLOCK_SIZE) + "KB");
+        System.out.println("Free Space: " + ((n - countAlloc) * BLOCK_SIZE) + "KB");
     }
 }

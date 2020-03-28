@@ -13,7 +13,6 @@ public class Main {
     /*
     TODO:
     -saving and loading this to file
-    -The space thing
     -Removing root bug
     -back to display structure
      */
