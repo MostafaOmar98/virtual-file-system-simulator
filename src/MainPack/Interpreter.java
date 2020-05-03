@@ -43,8 +43,6 @@ public class Interpreter {
                 Utility.printError(VFSError.INV_COMMAND);
                 return VFSError.INV_COMMAND;
         }
-        if (command != null)
-            return command.execute();
-        return VFSError.OK;
+        return command.execute();
     }
 }
